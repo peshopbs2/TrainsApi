@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TrainsApi.Data.Entities;
+using TrainsApi.Data.Seeders;
 
 public class AppDbContext : DbContext
 {
@@ -20,7 +21,7 @@ public class AppDbContext : DbContext
                     .HasMany(t => t.Conductors)
                     .WithMany(e => e.ConductorTrains)
                     .UsingEntity(join => join.ToTable("TrainEmployeeConductor"));
-
+        modelBuilder.SeedLocations();
 
         base.OnModelCreating(modelBuilder);
     }
