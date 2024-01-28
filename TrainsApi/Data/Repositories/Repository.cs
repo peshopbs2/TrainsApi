@@ -36,6 +36,10 @@ namespace TrainsApi.Data.Repositories
                 _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
+            else
+            {
+                throw new InvalidOperationException($"Item does not exist! (ID: {id}");
+            }
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
