@@ -1,22 +1,21 @@
-﻿using ArtistMVC.Data.Data.Abstractions;
-using ArtistMVC.Data.Repositories.Abstractions;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TrainsApi.Data.Entities;
+using TrainsApi.Data.Repositories.Abstractions;
 
-namespace ArtistMVC.Data.Repositories
+namespace TrainsApi.Data.Repositories
 {
     public class Repository<T> : IRepository<T>
         where T : BaseEntity
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
-        public Repository(ApplicationDbContext context)
+        public Repository(AppDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
