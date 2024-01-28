@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrainsApi.Data.Entities;
+using TrainsApi.DTOs.Requests;
+using TrainsApi.DTOs.Responses;
 using TrainsApi.Services.Abstractions;
 
 namespace TrainsApi.Controllers
@@ -23,14 +25,14 @@ namespace TrainsApi.Controllers
 
         // GET: api/Locations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location>>> GetLocations()
+        public async Task<ActionResult<IEnumerable<LocationResponseDTO>>> GetLocations()
         {
             return await _locationService.GetLocationsAsync();
         }
 
         // GET: api/Locations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Location>> GetLocation(int id)
+        public async Task<ActionResult<LocationResponseDTO>> GetLocation(int id)
         {
             var location = await _locationService.GetLocationByIdAsync(id);
 
@@ -44,7 +46,7 @@ namespace TrainsApi.Controllers
 
         // GET: api/Locations/ByName/Banichka
         [HttpGet("ByName/{name}")]
-        public async Task<ActionResult<Location>> GetLocationByName(string name)
+        public async Task<ActionResult<LocationResponseDTO>> GetLocationByName(string name)
         {
             var location = await _locationService.GetLocationByNameAsync(name);
 
@@ -58,7 +60,7 @@ namespace TrainsApi.Controllers
         // PUT: api/Locations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLocation(int id, Location location)
+        public async Task<IActionResult> PutLocation(int id, LocationRequestDTO location)
         {
             if (id != location.Id)
             {
@@ -74,7 +76,7 @@ namespace TrainsApi.Controllers
         // POST: api/Locations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Location>> PostLocation(Location location)
+        public async Task<ActionResult<LocationResponseDTO>> PostLocation(LocationRequestDTO location)
         {
             await _locationService.AddLocationAsync(location);
 
