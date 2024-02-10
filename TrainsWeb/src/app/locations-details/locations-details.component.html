@@ -1,0 +1,10 @@
+<div *ngIf="location.id != 0">
+    <h1>{{ location.name }}</h1>
+    <p>Id: {{ location.id }}</p>
+    <a href="locations/edit/{{ location.id }}">Edit</a>
+    -
+    <a href="locations/delete/{{ location.id }}">Delete</a>
+</div>
+<div *ngIf="location.id === 0">
+    Sorry but this location doesn't seem to exist
+</div>

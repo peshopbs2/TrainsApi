@@ -1,0 +1,12 @@
+<h1>Locations</h1>
+<ul>
+    <li *ngFor="let location of locations">
+        <a href="locations/{{ location.id }}">
+            {{location.name}}
+        </a>
+        -
+        <a href="locations/edit/{{ location.id }}">Edit</a>
+        -
+        <a href="locations/delete/{{ location.id }}">Delete</a>
+    </li>
+</ul>
