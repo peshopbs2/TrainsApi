@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TrainsApi.Data.Entities;
 using TrainsApi.Data.Seeders;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext
 {
 	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 	{
@@ -32,4 +33,5 @@ public class AppDbContext : DbContext
 	public DbSet<TimetableEntry> TimetableEntries { get; set; }
 	public DbSet<Train> Trains { get; set; }
 	public DbSet<Wagon> Wagons { get; set; }
+    public DbSet<User> Users { get; set; }
 }
